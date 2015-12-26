@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">WorkTap</string>
     <string name="action_settings">Settings</string>
+
+    <!--
+        overview
+    -->
+    <string name="overview.toolbar.icon.description">On of off clock icon</string>
+    <string name="overview.toolbar.time.today">88h 88m</string>
+    <string name="overview.toolbar.time.week">88h 88m</string>
+    <string name="overview.toolbar.time.week.label">week ·</string>
+    <string name="overview.toolbar.time.month">88h 88m</string>
+    <string name="overview.toolbar.time.month.label">month ·</string>
 </resources>

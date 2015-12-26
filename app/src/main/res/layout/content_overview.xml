@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,8 +13,30 @@
     tools:context="se.novafaen.worktap.OverviewActivity"
     tools:showIn="@layout/activity_overview">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ProgressBar
+        android:id="@+id/native_progress_bar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:indeterminate="true" />
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/tap_card"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        card_view:cardCornerRadius="4dp">
+
+        <TextView
+            android:id="@+id/overview.card.tap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/overview.toolbar.time.month"
+            android:textSize="40sp"
+            android:padding="10dp"/>
+
+    </android.support.v7.widget.CardView>
+
 </RelativeLayout>
