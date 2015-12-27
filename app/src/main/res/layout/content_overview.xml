@@ -19,7 +19,8 @@
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
-        android:indeterminate="true" />
+        android:indeterminate="true"
+        />
 
     <LinearLayout
         android:id="@+id/overview.taplist.separator"
@@ -57,6 +58,8 @@
             android:id="@+id/tap_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardElevation="2sp"
             card_view:cardCornerRadius="4dp">
 
             <RelativeLayout

@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- not on clock -->
-    <color name="colorPrimary">#E64A19</color>
-    <color name="colorPrimaryDark">#D84315</color>
-    <color name="colorAccent">#BF360C</color>
+    <color name="colorPrimary">#2c3a49</color>
+    <color name="colorPrimaryDark">#1c2a39</color>
+    <color name="colorAccent">#007c21</color>
+
+    <!--<color name="colorPrimary">#1c2a39</color>-->
+    <!--<color name="colorPrimaryDark">#2c3a49</color>-->
+    <!--<color name="colorAccent">#3c4a59</color>-->
+
+    <!--<color name="colorPrimary">#E64A19</color>-->
+    <!--<color name="colorPrimaryDark">#D84315</color>-->
+    <!--<color name="colorAccent">#BF360C</color>-->
 
     <!-- on clock -->
-    <color name="colorPrimaryOnClock">#00b16a</color>
-    <color name="colorPrimaryDarkOnClock">#049372</color>
-    <color name="colorAccentOnClock">#1e824c</color>
+    <color name="colorPrimaryOnClock">#005c01</color>
+    <color name="colorPrimaryDarkOnClock">#006c11</color>
+    <color name="colorAccentOnClock">#007c21</color>
+
+    <!-- off clock -->
+    <color name="colorPrimaryOffClock">#870000</color>
+    <color name="colorPrimaryDarkOffClock">#a70c00</color>
+    <color name="colorAccentOffClock">#b71c0c</color>
 
     <!-- other -->
     <color name="colorWhite">#ffffff</color>
-    <color name="colorDarkGray">#262626</color>
+    <color name="colorDarkGray">#5c6a79</color>
     <color name="colorGray">#989898</color>
     <color name="colorLightGray">#ededed</color>
 </resources>
