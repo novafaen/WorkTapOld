@@ -8,7 +8,16 @@
     <string name="overview.toolbar.icon.description">On of off clock icon</string>
     <string name="overview.toolbar.time.today">88h 88m</string>
     <string name="overview.toolbar.time.week">88h 88m</string>
-    <string name="overview.toolbar.time.week.label">week ·</string>
+    <string name="overview.toolbar.time.week.label">week</string>
     <string name="overview.toolbar.time.month">88h 88m</string>
-    <string name="overview.toolbar.time.month.label">month ·</string>
+    <string name="overview.toolbar.time.month.label">month</string>
+    <string name="overview.toolbar.separator.dot">·</string>
+
+    <!--
+        overview: latest taps list
+    -->
+    <string name="overview.content.taplist.latest.label">Latest taps</string>
+    <string name="overview.content.taplist.card.weekday">Wednesday</string>
+    <string name="overview.content.taplist.separator.dot">·</string>
+
 </resources>

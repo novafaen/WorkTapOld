@@ -12,6 +12,7 @@
 
     <!-- other -->
     <color name="colorWhite">#ffffff</color>
-    <color name="colorGray">#262626</color>
+    <color name="colorDarkGray">#262626</color>
+    <color name="colorGray">#989898</color>
     <color name="colorLightGray">#ededed</color>
 </resources>

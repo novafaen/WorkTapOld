@@ -57,53 +57,77 @@
                 android:text="@string/overview.toolbar.time.today" />
 
             <TextView
-                android:id="@+id/overview.summay.label.week"
+                android:id="@+id/overview.summary.label.week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/overview.summay.time.today"
                 android:layout_alignStart="@id/overview.summay.time.today"
                 android:layout_alignLeft="@id/overview.summay.time.today"
                 android:textSize="16sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorDarkGray"
                 android:text="@string/overview.toolbar.time.week.label" />
+
+            <TextView
+                android:id="@+id/overview.summary.separator.week"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/overview.summary.label.week"
+                android:layout_toEndOf="@id/overview.summary.label.week"
+                android:layout_toRightOf="@id/overview.summary.label.week"
+                android:paddingStart="5sp"
+                android:paddingLeft="5sp"
+                android:paddingRight="5sp"
+                android:paddingEnd="5sp"
+                android:textSize="16sp"
+                android:textColor="@color/colorDarkGray"
+                android:text="@string/overview.toolbar.separator.dot" />
 
             <TextView
                 android:id="@+id/overview.summay.time.week"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/overview.summay.label.week"
-                android:layout_toEndOf="@id/overview.summay.label.week"
-                android:layout_toRightOf="@id/overview.summay.label.week"
-                android:paddingStart="5sp"
-                android:paddingLeft="5sp"
-                android:paddingEnd="0sp"
-                android:paddingRight="0sp"
+                android:layout_alignBaseline="@id/overview.summary.label.week"
+                android:layout_toEndOf="@id/overview.summary.separator.week"
+                android:layout_toRightOf="@id/overview.summary.separator.week"
+                android:padding="0sp"
                 android:textSize="16sp"
                 android:textColor="@color/colorWhite"
                 android:text="@string/overview.toolbar.time.week" />
 
             <TextView
-                android:id="@+id/overview.summay.label.month"
+                android:id="@+id/overview.summary.label.month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/overview.summay.label.week"
-                android:layout_alignStart="@id/overview.summay.label.week"
-                android:layout_alignLeft="@id/overview.summay.label.week"
+                android:layout_below="@id/overview.summary.label.week"
+                android:layout_alignStart="@id/overview.summary.label.week"
+                android:layout_alignLeft="@id/overview.summary.label.week"
                 android:textSize="16sp"
-                android:textColor="@color/colorGray"
+                android:textColor="@color/colorDarkGray"
                 android:text="@string/overview.toolbar.time.month.label" />
+
+            <TextView
+                android:id="@+id/overview.summary.separator.month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/overview.summary.label.month"
+                android:layout_toEndOf="@id/overview.summary.label.month"
+                android:layout_toRightOf="@id/overview.summary.label.month"
+                android:paddingStart="5sp"
+                android:paddingLeft="5sp"
+                android:paddingRight="5sp"
+                android:paddingEnd="5sp"
+                android:textSize="16sp"
+                android:textColor="@color/colorDarkGray"
+                android:text="@string/overview.toolbar.separator.dot" />
 
             <TextView
                 android:id="@+id/overview.summay.time.month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/overview.summay.label.month"
-                android:layout_toEndOf="@id/overview.summay.label.month"
-                android:layout_toRightOf="@id/overview.summay.label.month"
-                android:paddingStart="5sp"
-                android:paddingLeft="5sp"
-                android:paddingEnd="0sp"
-                android:paddingRight="0sp"
+                android:layout_alignBaseline="@id/overview.summary.label.month"
+                android:layout_toEndOf="@id/overview.summary.separator.month"
+                android:layout_toRightOf="@id/overview.summary.separator.month"
+                android:padding="0sp"
                 android:textSize="16sp"
                 android:textColor="@color/colorWhite"
                 android:text="@string/overview.toolbar.time.month" />

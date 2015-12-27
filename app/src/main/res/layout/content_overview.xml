@@ -21,22 +21,89 @@
         android:layout_marginTop="100dp"
         android:indeterminate="true" />
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tap_card"
-        android:layout_gravity="center"
+    <LinearLayout
+        android:id="@+id/overview.taplist.separator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp">
+        android:orientation="vertical">
+
+        <View
+            android:id="@+id/overview.taplist.line"
+            android:layout_height="1dp"
+            android:layout_width="60dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorAccent" />
 
         <TextView
-            android:id="@+id/overview.card.tap"
+            android:id="@+id/overview.taplist.label"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/overview.toolbar.time.month"
-            android:textSize="40sp"
-            android:padding="10dp"/>
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp"
+            android:gravity="center_horizontal"
+            android:text="@string/overview.content.taplist.latest.label"/>
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <!-- to be replaced with recycler view -->
+    <RelativeLayout
+        android:layout_below="@id/overview.taplist.separator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tap_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="4dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10sp">
+
+                <TextView
+                    android:id="@+id/overview.card.weekday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overview.content.taplist.card.weekday"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorGray"
+                    android:padding="0sp"/>
+
+                <TextView
+                    android:id="@+id/overview.card.separator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/overview.content.taplist.separator.dot"
+                    android:layout_alignBaseline="@id/overview.card.weekday"
+                    android:layout_toEndOf="@id/overview.card.weekday"
+                    android:layout_toRightOf="@id/overview.card.weekday"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorGray"
+                    android:paddingStart="5sp"
+                    android:paddingLeft="5sp"
+                    android:paddingEnd="5sp"
+                    android:paddingRight="5sp"/>
+
+                <TextView
+                    android:id="@+id/overview.card.tap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/overview.card.weekday"
+                    android:layout_toEndOf="@id/overview.card.separator"
+                    android:layout_toRightOf="@id/overview.card.separator"
+                    android:text="@string/overview.toolbar.time.month"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorDarkGray"
+                    android:padding="0sp"/>
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
 
 </RelativeLayout>
