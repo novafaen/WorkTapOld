@@ -33,7 +33,7 @@
             android:layout_height="1dp"
             android:layout_width="60dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/colorAccent" />
+            android:background="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/overview.taplist.label"
@@ -47,7 +47,7 @@
 
     </LinearLayout>
 
-    <!-- to be replaced with recycler view -->
+     <!-- to be replaced with recycler view -->
     <RelativeLayout
         android:layout_below="@id/overview.taplist.separator"
         android:layout_width="match_parent"

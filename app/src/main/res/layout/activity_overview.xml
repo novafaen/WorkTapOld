@@ -32,17 +32,46 @@
             android:paddingEnd="10dp"
             android:paddingRight="10dp">
 
-            <ImageView
-                android:id="@+id/overview.summary.icon"
+            <Button
+                android:id="@+id/overview.summary.button.edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_timelapse_black_24dp"
-                android:tint="@android:color/white"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:background="@android:color/transparent"
+                android:text="@string/overview.toolbar.button.edit"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:textSize="18sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"/>
+
+            <TextView
+                android:id="@+id/overview.summary.icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:paddingStart="0dp"
                 android:paddingLeft="0dp"
                 android:paddingEnd="5dp"
                 android:paddingRight="5dp"
-                android:contentDescription="@string/overview.toolbar.icon.description" />
+                android:textSize="100sp"
+                android:textColor="@color/colorWhite"
+                android:text="@string/overview.icon.clock"/>
+
+            <!--<ImageView-->
+                <!--android:id="@+id/overview.summary.icon"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:src="@drawable/ic_timelapse_black_24dp"-->
+                <!--android:tint="@android:color/white"-->
+                <!--android:paddingStart="0dp"-->
+                <!--android:paddingLeft="0dp"-->
+                <!--android:paddingEnd="5dp"-->
+                <!--android:paddingRight="5dp"-->
+                <!--android:contentDescription="@string/overview.toolbar.icon.description" />-->
 
             <TextView
                 android:id="@+id/overview.summay.time.today"

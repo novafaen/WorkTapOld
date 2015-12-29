@@ -12,17 +12,18 @@
     <!--<color name="colorPrimaryDark">#D84315</color>-->
     <!--<color name="colorAccent">#BF360C</color>-->
 
-    <!-- on clock -->
-    <color name="colorPrimaryOnClock">#005c01</color>
-    <color name="colorPrimaryDarkOnClock">#006c11</color>
-    <color name="colorAccentOnClock">#007c21</color>
+    <!--&lt;!&ndash; on clock &ndash;&gt;-->
+    <!--<color name="colorPrimaryOnClock">#006c11</color>-->
+    <!--<color name="colorPrimaryDarkOnClock">#005c01</color>-->
+    <!--<color name="colorAccentOnClock">#b71c0c</color>-->
 
-    <!-- off clock -->
-    <color name="colorPrimaryOffClock">#870000</color>
-    <color name="colorPrimaryDarkOffClock">#a70c00</color>
-    <color name="colorAccentOffClock">#b71c0c</color>
+    <!--&lt;!&ndash; off clock &ndash;&gt;-->
+    <!--<color name="colorPrimaryOffClock">#870000</color>-->
+    <!--<color name="colorPrimaryDarkOffClock">#a70c00</color>-->
+    <!--<color name="colorAccentOffClock">#007c21</color>-->
 
     <!-- other -->
+    <color name="colorOrange">#f75c4c</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorDarkGray">#5c6a79</color>
     <color name="colorGray">#989898</color>

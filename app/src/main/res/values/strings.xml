@@ -12,6 +12,9 @@
     <string name="overview.toolbar.time.month">88h 88m</string>
     <string name="overview.toolbar.time.month.label">month</string>
     <string name="overview.toolbar.separator.dot">·</string>
+    <string name="overview.toolbar.button.edit">\uf040</string>
+    <string name="overview.icon.clock">\uf017</string>
+    <!--<string name="overview.fab.clock">\uf017</string>-->
 
     <!--
         overview: latest taps list
