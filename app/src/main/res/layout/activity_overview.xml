@@ -47,7 +47,8 @@
                 android:textSize="18sp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                android:visibility="invisible"/>
 
             <TextView
                 android:id="@+id/overview.summary.icon"
@@ -173,6 +174,18 @@
         android:tint="@android:color/white"
         app:layout_anchor="@id/overview.summary.toolbar"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_timelapse_black_24dp" />
+        android:src="@drawable/ic_timelapse_black_24dp"
+        android:onClick="registerTap"/>
+
+    <!--<ImageButton-->
+        <!--android:id="@+id/fab.tap"-->
+        <!--android:transitionName="button_fab"-->
+        <!--android:layout_width="56dp"-->
+        <!--android:layout_height="56dp"-->
+        <!--android:layout_margin="@dimen/fab_margin"-->
+        <!--app:layout_anchor="@id/overview.summary.toolbar"-->
+        <!--app:layout_anchorGravity="bottom|right|end"-->
+        <!--android:elevation="5dp"-->
+        <!--android:onClick="registerTap" />-->
 
 </android.support.design.widget.CoordinatorLayout>
