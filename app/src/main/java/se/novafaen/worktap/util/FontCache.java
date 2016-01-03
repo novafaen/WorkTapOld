@@ -7,7 +7,10 @@ import android.util.Log;
 import java.util.Hashtable;
 
 /**
- * Created by Kristoffer Nilsson on 2015-12-27.
+ * Font Cache, prevents memory leak.
+ *
+ * @since 2015-12-27
+ * @author Kristoffer Nilsson
  */
 public class FontCache {
 

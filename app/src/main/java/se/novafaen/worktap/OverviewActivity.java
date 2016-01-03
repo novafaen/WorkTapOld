@@ -2,19 +2,44 @@ package se.novafaen.worktap;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
-import se.novafaen.worktap.util.FontCache;
+import org.joda.time.Instant;
 
+import se.novafaen.worktap.util.FontCache;
+import se.novafaen.worktap.util.TimeFormatter;
+
+/**
+ * Default activity.
+ *
+ * @since 2015-12-18
+ * @author Kristoffer Nilsson
+ */
 public class OverviewActivity extends AppCompatActivity {
+
+    private TapTime tapTime;
+    private Handler updateHandler;
+
+    /**
+     * Updated GUI with one second
+     */
+    private Runnable updateTimeRunnable = new Runnable() {
+        @Override
+        public void run() {
+            updateGUI();
+
+            // update once every minute
+            updateHandler.postDelayed(this, 5000); // TODO: change to a minute later
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,21 +49,18 @@ public class OverviewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // set edit button font
+        updateHandler = new Handler();
+        tapTime = new TapTime(0L, 0L, 0L);
+
+        // set gui fonts
         Typeface typeface = FontCache.get(getApplicationContext(), "fonts/fontawesome-webfont.ttf");
         Button editButton = (Button)findViewById(R.id.overview_summary_button_edit);
         editButton.setTypeface(typeface);
         TextView icon = (TextView)findViewById(R.id.overview_summary_icon);
         icon.setTypeface(typeface);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        // finally update gui
+        updateGUI();
     }
 
     @Override
@@ -50,16 +72,59 @@ public class OverviewActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
+        // do nothing, so far
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * register tap from GUI.
+     */
+    public void registerTap(View view) {
+        Log.d("OverviewActivity", "registering tap");
+
+        Long nowTimeStamp = Instant.now().getMillis();
+
+        Button editButton = (Button)findViewById(R.id.overview_summary_button_edit);
+
+        tapTime.registerTap(nowTimeStamp);
+
+        // set gui in correct state
+        if (tapTime.ongoingTap()) {
+            // event started a tap, start update timer
+            updateHandler.post(updateTimeRunnable);
+
+            editButton.setVisibility(View.VISIBLE);
+
+        } else {
+            // event ended a tap, stop update timer
+            updateHandler.removeCallbacks(updateTimeRunnable); // stop update timer
+
+            tapTime.resetCurrentTap();
+
+            editButton.setVisibility(View.INVISIBLE);
+
+            updateGUI(); // finally, update gui
+        }
+
+    }
+
+    /**
+     * update GUI, called explicitly or by timer.
+     */
+    private void updateGUI() {
+        // today
+        TextView todayTextView = (TextView)findViewById(R.id.overview_summay_time_today);
+        Long timeToday = tapTime.getTappedToday();
+        todayTextView.setText(TimeFormatter.formatTimeNatural(timeToday));
+
+        // week
+        TextView weekTextView = (TextView)findViewById(R.id.overview_summay_time_week);
+        Long timeWeek = tapTime.getTappedWeekTotal();
+        weekTextView.setText(TimeFormatter.formatTimeNatural(timeWeek));
+
+        // month
+        TextView monthTextView = (TextView)findViewById(R.id.overview_summay_time_month);
+        Long timeMonth = tapTime.getTappedMonthTotal();
+        monthTextView.setText(TimeFormatter.formatTimeNatural(timeMonth));
     }
 }
