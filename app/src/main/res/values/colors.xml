@@ -23,6 +23,8 @@
     <!--<color name="colorAccentOffClock">#007c21</color>-->
 
     <!-- other -->
+    <color name="colorGreen">#009c41</color>
+    <color name="colorRed">#870000</color>
     <color name="colorOrange">#f75c4c</color>
     <color name="colorWhite">#ffffff</color>
     <color name="colorDarkGray">#5c6a79</color>

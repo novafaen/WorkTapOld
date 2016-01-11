@@ -1,7 +1,5 @@
 package se.novafaen.worktap;
 
-import android.util.Log;
-
 import org.joda.time.Instant;
 
 /**
@@ -17,18 +15,6 @@ public class TapTime {
     private Long todayTime;
     private Long weekTime;
     private Long monthTime;
-
-    /**
-     * Default constructor.
-     */
-    @Deprecated
-    public TapTime() {
-        startTime = null;
-        stopTime = null;
-        todayTime = 0L;
-        weekTime = null;
-        monthTime = null;
-    }
 
     /**
      * Constructor.
@@ -52,11 +38,14 @@ public class TapTime {
     /**
      * Reset current tap, keep week and month time.
      */
-    public void resetCurrentTap() {
-        if (stopTime != null) {
-            // include current in total
-            todayTime += stopTime - startTime;
+    public void resetCurrentTap() throws RuntimeException {
+        if (stopTime == null) {
+            throw new RuntimeException("resetting ongoing tap," +
+                    " can only be performed for stopped/finished taps");
         }
+
+        // include current in total
+        todayTime += stopTime - startTime;
 
         startTime = null;
         stopTime = null;
@@ -92,14 +81,11 @@ public class TapTime {
      */
     public Long getTappedToday() {
         if (startTime == null) {
-            Log.d("TapTime", "getTappedToday() no ongoing tap");
             return todayTime;
         } else {
             if (stopTime == null) {
-                Log.d("TapTime", "getTodayTotal() ongoing tap");
                 return todayTime + (Instant.now().getMillis() - startTime);
             } else {
-                Log.d("TapTime", "getTappedToday() tap finished");
                 return todayTime + (stopTime - startTime);
             }
         }
@@ -125,15 +111,15 @@ public class TapTime {
      * Register tap event. If no ongoing tap, start new one. If ongoing tap, stop it.
      * @param tapTime timestamp in milliseconds
      */
-    public void registerTap(Long tapTime) {
-        Log.d("TapTime", "received tap event (" + tapTime + ")");
-
+    public void registerTap(Long tapTime) throws RuntimeException{
         if (startTime == null) {
             startTime = tapTime;
         } else if (stopTime == null) {
             stopTime = tapTime;
         } else {
-            Log.w("TapTime", "unknown event, event already closed");
+            throw new RuntimeException("received event" +
+                    ", startTime=" + startTime +
+                    ", stopTime=" + stopTime + ", expected either stopTime or both to be null");
         }
     }
 }

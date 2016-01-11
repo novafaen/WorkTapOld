@@ -3,6 +3,8 @@ package se.novafaen.worktap;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -126,5 +128,13 @@ public class OverviewActivity extends AppCompatActivity {
         TextView monthTextView = (TextView)findViewById(R.id.overview_summay_time_month);
         Long timeMonth = tapTime.getTappedMonthTotal();
         monthTextView.setText(TimeFormatter.formatTimeNatural(timeMonth));
+
+        // set tap button color
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        if (tapTime.ongoingTap()) {
+            fab.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorRed));
+        } else {
+            fab.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.colorGreen));
+        }
     }
 }

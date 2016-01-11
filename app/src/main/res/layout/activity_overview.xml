@@ -23,7 +23,6 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
         <RelativeLayout
-
             android:layout_width="match_parent"
             android:layout_height="110dp"
             android:background="@color/colorPrimary"
