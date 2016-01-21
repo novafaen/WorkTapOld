@@ -14,8 +14,14 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.joda.time.DateTimeUtils;
+import org.joda.time.DateTimeZone;
 import org.joda.time.Instant;
 
+import java.util.TimeZone;
+
+import se.novafaen.worktap.db.TapDatabase;
+import se.novafaen.worktap.util.DateHelper;
 import se.novafaen.worktap.util.FontCache;
 import se.novafaen.worktap.util.TimeFormatter;
 
@@ -27,6 +33,7 @@ import se.novafaen.worktap.util.TimeFormatter;
  */
 public class OverviewActivity extends AppCompatActivity {
 
+    private TapDatabase dbHelper;
     private TapTime tapTime;
     private Handler updateHandler;
 
@@ -51,8 +58,8 @@ public class OverviewActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // handler to update gui
         updateHandler = new Handler();
-        tapTime = new TapTime(0L, 0L, 0L);
 
         // set gui fonts
         Typeface typeface = FontCache.get(getApplicationContext(), "fonts/fontawesome-webfont.ttf");
@@ -60,6 +67,19 @@ public class OverviewActivity extends AppCompatActivity {
         editButton.setTypeface(typeface);
         TextView icon = (TextView)findViewById(R.id.overview_summary_icon);
         icon.setTypeface(typeface);
+
+        // setup storage
+        dbHelper = new TapDatabase(this);
+
+        // setup time
+        long todayTime = dbHelper.loadTappedSinceTimestamp(
+                DateHelper.getStartOfDayToday());
+        long weekTime = dbHelper.loadTappedSinceTimestamp(
+                DateHelper.getStartOfDaySinceWeekday(DateHelper.Day.MONDAY)) - todayTime;
+        long monthTime = dbHelper.loadTappedSinceTimestamp(
+                DateHelper.getStartOfDaySinceMonthStart()) - todayTime - weekTime;
+
+        tapTime = new TapTime(todayTime, weekTime, monthTime);
 
         // finally update gui
         updateGUI();
@@ -101,7 +121,13 @@ public class OverviewActivity extends AppCompatActivity {
             // event ended a tap, stop update timer
             updateHandler.removeCallbacks(updateTimeRunnable); // stop update timer
 
-            tapTime.resetCurrentTap();
+            String timeZone = TimeZone.getDefault().getDisplayName();
+            //String timeZone = DateTimeZone.getDefault().getName(nowTimeStamp);
+            Log.d("OverviewActivity", "registering tap for time zome=" + timeZone);
+
+            if (dbHelper.saveToDatabase(tapTime.getStartTimestamp(), nowTimeStamp, timeZone)) {
+                tapTime.resetCurrentTap();
+            }
 
             editButton.setVisibility(View.INVISIBLE);
 

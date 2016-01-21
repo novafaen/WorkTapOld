@@ -76,10 +76,18 @@ public class TapTime {
     }
 
     /**
+     * Get start time.
+     * @return time in milliseconds
+     */
+    public long getStartTimestamp() {
+        return startTime;
+    };
+
+    /**
      * Get tapped time for today (since midnight).
      * @return time in milliseconds
      */
-    public Long getTappedToday() {
+    public long getTappedToday() {
         if (startTime == null) {
             return todayTime;
         } else {
@@ -95,7 +103,7 @@ public class TapTime {
      * Get tapped time for this week.
      * @return time in milliseconds
      */
-    public Long getTappedWeekTotal() {
+    public long getTappedWeekTotal() {
         return weekTime + getTappedToday();
     }
 
@@ -103,7 +111,7 @@ public class TapTime {
      * Get tapped time for this month, excluding today and week.
      * @return time in milliseconds
      */
-    public Long getTappedMonthTotal() {
+    public long getTappedMonthTotal() {
         return monthTime + getTappedWeekTotal();
     }
 

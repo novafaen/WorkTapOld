@@ -47,7 +47,7 @@ public class DateHelper {
      * @param days amount of days back in the past
      * @return timestamp in milliseconds
      */
-    public static Long getStartOfDayMinusDays(Integer days) {
+    public static long getStartOfDayMinusDays(Integer days) {
         return getStartOfDayTodayDefaultTimezone()
                 .minusDays(days)
                 .toDate()
@@ -59,7 +59,7 @@ public class DateHelper {
      * Note: This function use device time zone.
      * @return timestamp in milliseconds
      */
-    public static Long getStartOfDayToday() {
+    public static long getStartOfDayToday() {
         return getStartOfDayMinusDays(0);
     }
 
@@ -68,7 +68,7 @@ public class DateHelper {
      * @param day weekday enum.
      * @return timestamp in milliseconds
      */
-    public static Long getStartOfDaySinceWeekday(Day day) {
+    public static long getStartOfDaySinceWeekday(Day day) {
         int todayNumber = getStartOfDayTodayDefaultTimezone().getDayOfWeek();
         int requestedDayNumber = day.getValue();
 
@@ -77,5 +77,11 @@ public class DateHelper {
         } else {
             return getStartOfDayMinusDays(7 - requestedDayNumber + todayNumber);
         }
+    }
+
+    public static long getStartOfDaySinceMonthStart() {
+        int todayDayOfMonth = new Instant().toDateTime().getDayOfMonth();
+
+        return getStartOfDayMinusDays(todayDayOfMonth - 1); // if first, start today (i.e. 0)
     }
 }
